@@ -11,6 +11,7 @@
     <modules>
         <module>liubility-api</module>
         <module>liubility-commons</module>
+        <module>liubility-commons-dto</module>
     </modules>
 
     <name>liubility-parent</name>
