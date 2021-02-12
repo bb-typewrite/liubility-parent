@@ -1,5 +1,7 @@
 package org.liubility.api;
 
+import org.liubility.commons.dto.account.AccountDto;
+
 /**
  * @Author JDragon
  * @Date 2021.02.11 上午 12:36
@@ -8,5 +10,5 @@ package org.liubility.api;
  */
 public interface AccountServiceProvider {
 
-//    public
+    public AccountDto getLoginAccountByName(String username);
 }

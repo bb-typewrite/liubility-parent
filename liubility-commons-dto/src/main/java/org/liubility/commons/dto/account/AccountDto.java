@@ -7,15 +7,15 @@ package org.liubility.commons.dto.account;
  * @Des:
  */
 
-public class UserDto {
+public class AccountDto {
 
     private String username;
 
     private String password;
 
-    public UserDto(){}
+    public AccountDto(){}
 
-    public UserDto(String username, String password) {
+    public AccountDto(String username, String password) {
         this.username = username;
         this.password = password;
     }

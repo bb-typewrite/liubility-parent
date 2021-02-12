@@ -23,7 +23,13 @@
     <dependency>
       <groupId>org.liubility</groupId>
       <artifactId>liubility-commons</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.liubility</groupId>
+      <artifactId>liubility-commons-dto</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <!--SpringCloud openfeign -->
     <dependency>
