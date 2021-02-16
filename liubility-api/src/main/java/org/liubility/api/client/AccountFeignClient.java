@@ -4,6 +4,7 @@ import org.liubility.api.AccountServiceProvider;
 import org.liubility.commons.dto.account.AccountDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Author JDragon
@@ -16,5 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface AccountFeignClient extends AccountServiceProvider {
     @Override
     @GetMapping("/getLoginAccountByName")
-    AccountDto getLoginAccountByName(String username);
+    AccountDto getLoginAccountByName(@RequestParam("username") String username);
+
+
 }
