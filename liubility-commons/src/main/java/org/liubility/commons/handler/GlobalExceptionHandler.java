@@ -23,7 +23,6 @@ public class GlobalExceptionHandler {
     public Result<String> getMessage(MethodArgumentNotValidException exception) {
         // 获取NotNull注解中的message
         String message = exception.getBindingResult().getFieldError().getDefaultMessage();
-        //判断方法是否加了@AOPLogAnnotation注解
         return Result.paramsError(message);
     }
 
