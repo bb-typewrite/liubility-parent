@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: Jdragon
@@ -11,6 +12,8 @@ import org.springframework.context.ApplicationContextAware;
  * @Date: 2020.07.28 23:15
  * @Description:
  */
+
+@Component
 public class SpringContextHolder implements ApplicationContextAware, DisposableBean {
 
     private static ApplicationContext applicationContext = null;
