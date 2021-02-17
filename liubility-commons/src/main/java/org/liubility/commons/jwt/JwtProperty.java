@@ -3,7 +3,8 @@ package org.liubility.commons.jwt;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+
+import java.util.List;
 
 /**
  * @Author JDragon
@@ -21,5 +22,5 @@ public class JwtProperty {
 
     private String secretKey;
 
-    private String header;
+    private List<String> ignore;
 }

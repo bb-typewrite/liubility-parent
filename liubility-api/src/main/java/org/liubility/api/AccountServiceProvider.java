@@ -1,7 +1,5 @@
 package org.liubility.api;
 
-import org.liubility.commons.dto.account.AccountDto;
-import org.liubility.commons.http.response.normal.Result;
 
 /**
  * @Author JDragon
@@ -11,7 +9,4 @@ import org.liubility.commons.http.response.normal.Result;
  */
 public interface AccountServiceProvider {
 
-    public Result<String> login(AccountDto accountDto);
-
-    public AccountDto getLoginAccountByName(String username);
 }
