@@ -16,14 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Des:
  */
 
-@FeignClient(value = "security-service", path = "/account")
+@FeignClient(value = "account-service", path = "/account")
 public interface AccountFeignClient extends AccountServiceProvider {
-    @Override
-    @GetMapping("/getLoginAccountByName")
-    AccountDto getLoginAccountByName(@RequestParam("username") String username);
-
-    @Override
-    @PostMapping("/login")
-    public Result<String> login(@RequestBody AccountDto accountDto);
 
 }
