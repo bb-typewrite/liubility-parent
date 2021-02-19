@@ -1,6 +1,5 @@
 package org.liubility.api.zFeign;
 
-import org.liubility.commons.dto.robot.RobotPostOrder;
 import org.liubility.commons.zFeign.ZFeign;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +17,4 @@ import java.util.List;
 @ZFeign(baseUrl = "http://localhost:8081", basePath = "/robot",depth = "result")
 public interface PostOrderManagerApi {
 
-    @GetMapping("/getPostOrder")
-    List<RobotPostOrder> getPostOrder();
-
-    @PostMapping("/addPostOrder")
-    RobotPostOrder addPostOrder(@RequestBody RobotPostOrder robotPostOrder);
 }
