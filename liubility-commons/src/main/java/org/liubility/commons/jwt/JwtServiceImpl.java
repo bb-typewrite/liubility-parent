@@ -2,6 +2,7 @@ package org.liubility.commons.jwt;
 
 import com.alibaba.fastjson.JSON;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
@@ -119,8 +120,12 @@ public class JwtServiceImpl {
      * @return 是否有效
      */
     public Boolean isTokenExpired(String token) {
-        Claims claims = getClaimsFromToken(token);
-        Date expiration = claims.getExpiration();
-        return expiration.before(new Date());
+        try {
+            Claims claims = getClaimsFromToken(token);
+            Date expiration = claims.getExpiration();
+            return expiration.before(new Date());
+        } catch (ExpiredJwtException e) {
+            return true;
+        }
     }
 }

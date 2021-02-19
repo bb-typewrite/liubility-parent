@@ -17,9 +17,18 @@ public class AccountDto {
 
     public AccountDto(){}
 
-    public AccountDto(String username, String password) {
+    public AccountDto(int id,String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
