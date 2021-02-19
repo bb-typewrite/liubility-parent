@@ -9,6 +9,8 @@ package org.liubility.commons.dto.account;
 
 public class AccountDto {
 
+    private int id;
+
     private String username;
 
     private String password;

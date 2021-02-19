@@ -1,10 +1,12 @@
 package org.liubility.commons.jwt;
 
+import com.alibaba.fastjson.JSON;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.liubility.commons.dto.account.AccountDto;
+import org.liubility.commons.json.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +37,7 @@ public class JwtServiceImpl {
         log.debug("使用密钥:" + jwtProperty.getSecretKey());
         log.debug("过期时间:" + jwtProperty.getExpirationTime());
         Map<String, Object> claims = new HashMap<>(2);
-        claims.put(Claims.SUBJECT, userDetails.getUsername());
+        claims.put(Claims.SUBJECT, JSON.toJSONString(userDetails));
         claims.put(Claims.ISSUED_AT, new Date());
         return generateToken(claims);
     }
@@ -71,16 +73,20 @@ public class JwtServiceImpl {
      * @param token 令牌
      * @return 用户名
      */
-    public String getUsernameFromToken(String token) {
-        String username = null;
+    public <T> T getSubjectFromToken(String token, Class<T> c) {
+        String subjectStr = null;
+        T subject = null;
         try {
             Claims claims = getClaimsFromToken(token);
             log.debug("claims = " + claims.toString());
-            username = claims.getSubject();
+            subjectStr = claims.getSubject();
+            if (subjectStr != null) {
+                subject = JSON.parseObject(JSON.toJSONString(token), c);
+            }
         } catch (Exception e) {
             log.debug("e = " + e.getMessage());
         }
-        return username;
+        return subject;
     }
 
     /**
