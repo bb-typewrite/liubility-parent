@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Des:
  */
 
-@FeignClient(value = "account-service", path = "/account")
+@FeignClient(value = "typing-service", path = "/account")
 public interface AccountFeignClient extends AccountServiceProvider {
 
 }
