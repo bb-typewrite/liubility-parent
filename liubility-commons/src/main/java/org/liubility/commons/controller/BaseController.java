@@ -24,4 +24,7 @@ public class BaseController {
     public String getUsername(){
         return request.getHeader("username");
     }
+    public int getUserId(){
+        return Integer.parseInt(request.getHeader("userId"));
+    }
 }

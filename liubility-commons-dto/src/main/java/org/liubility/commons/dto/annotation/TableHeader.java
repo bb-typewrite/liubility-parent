@@ -1,4 +1,4 @@
-package org.liubility.commons.http.response.table;
+package org.liubility.commons.dto.annotation;
 
 import java.lang.annotation.*;
 
