@@ -6,8 +6,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
-import org.liubility.commons.dto.account.AccountDto;
-import org.liubility.commons.json.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +32,7 @@ public class JwtServiceImpl {
      * @param userDetails 用户
      * @return 令牌
      */
-    public String generateToken(AccountDto userDetails) {
+    public String generateToken(Object userDetails) {
         log.debug("使用密钥:" + jwtProperty.getSecretKey());
         log.debug("过期时间:" + jwtProperty.getExpirationTime());
         Map<String, Object> claims = new HashMap<>(2);
@@ -75,16 +73,17 @@ public class JwtServiceImpl {
      * @return 用户名
      */
     public <T> T getSubjectFromToken(String token, Class<T> c) {
-        String subjectStr = null;
+        String subjectStr;
         T subject = null;
         try {
             Claims claims = getClaimsFromToken(token);
             log.debug("claims = " + claims.toString());
             subjectStr = claims.getSubject();
             if (subjectStr != null) {
-                subject = JSON.parseObject(JSON.toJSONString(token), c);
+                subject = JSON.parseObject(subjectStr, c);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             log.debug("e = " + e.getMessage());
         }
         return subject;
