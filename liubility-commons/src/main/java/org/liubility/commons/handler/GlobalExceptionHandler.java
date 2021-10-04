@@ -2,6 +2,7 @@ package org.liubility.commons.handler;
 
 import org.liubility.commons.exception.AuthException;
 import org.liubility.commons.exception.LBException;
+import org.liubility.commons.exception.LBRuntimeException;
 import org.liubility.commons.http.response.normal.Result;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,11 +33,18 @@ public class GlobalExceptionHandler {
         return Result.unKnowError(exception.getMessage());
     }
 
+    @ExceptionHandler(value = {LBRuntimeException.class})
+    @ResponseBody
+    public Result<String> getMessage(LBRuntimeException exception) {
+        return Result.error(exception.getMessage());
+    }
+
     @ExceptionHandler(value = {LBException.class})
     @ResponseBody
     public Result<String> getMessage(LBException exception) {
         return Result.error(exception.getMessage());
     }
+
 
     @ExceptionHandler(value = {AuthException.class})
     @ResponseBody

@@ -1,5 +1,7 @@
 package org.liubility.commons.controller;
 
+import org.liubility.commons.constant.CommonConstants;
+import org.liubility.commons.holder.BaseContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
@@ -12,19 +14,24 @@ import javax.servlet.http.HttpServletRequest;
  * @Des:
  */
 public class BaseController {
-
-    @Autowired
-    private HttpServletRequest request;
-
-
-    public String getToken(){
-        return request.getHeader(HttpHeaders.AUTHORIZATION);
+    public String getToken() {
+        return BaseContextHolder.getToken();
     }
 
-    public String getUsername(){
-        return request.getHeader("username");
+    public String getUsername() {
+        return BaseContextHolder.getUsername();
     }
-    public int getUserId(){
-        return Integer.parseInt(request.getHeader("userId"));
+
+    public int getUserId() {
+        return BaseContextHolder.getUserId();
+    }
+
+    public static Long getPageNum() {
+        return BaseContextHolder.getPageNum();
+    }
+
+
+    public static Long getPageSize() {
+        return BaseContextHolder.getPageSize();
     }
 }

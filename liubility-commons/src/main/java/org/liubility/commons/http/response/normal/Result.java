@@ -69,7 +69,7 @@ public class Result<T> implements Serializable {
         return error(defaultData);
     }
     public static Result<String> error(String message) {
-        return new Result<>(ResultCode.SYSTEM_ERROR.getCode(),message,message);
+        return new Result<>(ResultCode.SYSTEM_ERROR.getCode(),message,null);
     }
     public static <T> Result<T> error(T result) {
         return new Result<>(ResultCode.SYSTEM_ERROR, result);

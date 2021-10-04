@@ -6,7 +6,7 @@ package org.liubility.commons.exception;
  * @Email 1061917196@qq.com
  * @Des:
  */
-public class AuthException extends Exception {
+public class AuthException extends RuntimeException {
     public AuthException(String message){
         super(message);
     }
