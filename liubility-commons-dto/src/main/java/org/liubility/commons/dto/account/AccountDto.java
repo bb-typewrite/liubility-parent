@@ -9,7 +9,7 @@ package org.liubility.commons.dto.account;
 
 public class AccountDto {
 
-    private int id;
+    private Integer id;
 
     private String username;
 

@@ -51,25 +51,42 @@ public class Result<T> implements Serializable {
         this.result = result;
     }
 
-    @SuppressWarnings("unchecked")
+    /**
+     * 返回成功状态码
+     */
     public static <T> Result<T> success() {
-        return success((T) defaultData);
+        return new Result<>(ResultCode.NORMAL, null);
     }
 
-    public static <T> Result<T> success(String message) {
-        return new Result<>(ResultCode.NORMAL.getCode(), message, null);
-    }
-
-    @SuppressWarnings("unchecked")
+    /**
+     * 返回成功状态码与结果
+     * @param result 自定义结果
+     * @param <T> 结果类型
+     */
     public static <T> Result<T> success(T result) {
-        if (result == null) {
-            result = (T) defaultData;
-        }
         return new Result<>(ResultCode.NORMAL, result);
     }
 
+    /**
+     * 自定义返回消息和结果
+     * @param message 自定义消息
+     * @param result 自定义结果
+     * @param <T> 结果类型
+     */
     public static <T> Result<T> success(String message, T result) {
         return new Result<>(ResultCode.NORMAL.getCode(), message, result);
+    }
+
+    /**
+     * 构建无结果自定义消息结果
+     * @param message 自定义消息
+     */
+    public static Result<String> successMsg(String message) {
+        return new Result<>(ResultCode.NORMAL.getCode(), message, null);
+    }
+
+    public static <T> Result<T> error() {
+        return error(null);
     }
 
     public static <T> Result<T> error(String message) {
@@ -92,18 +109,30 @@ public class Result<T> implements Serializable {
         return new Result<>(code, message, result);
     }
 
+    /**
+     * 认证异常
+     */
     public static <T> Result<T> authFail(T result) {
         return build(ResultCode.AUTH_FAIL, result);
     }
 
+    /**
+     * 权限不足异常
+     */
     public static <T> Result<T> permissionsNotEnough(T result) {
         return build(ResultCode.PERMISSIONS_NOT_ENOUGH, result);
     }
 
+    /**
+     * 参数异常
+     */
     public static <T> Result<T> paramsError(T result) {
         return build(ResultCode.PARAMS_ERROR, result);
     }
 
+    /**
+     * 未知异常
+     */
     public static <T> Result<T> unKnowError(T result) {
         return build(ResultCode.SYSTEM_UN_KNOW_ERROR, result);
     }
