@@ -17,13 +17,11 @@ import java.util.List;
 public class TableFactory {
 
     public static <T> PageTable<T> buildPageTable(TableRef<T> table) {
-        PageTable<T> pageTable = new PageTable<>();
-        pageTable.setTable(buildTable(table));
-        return pageTable;
+        return buildPageTable(table.getList().size(), 1L, 1L, 1L, table);
     }
 
     public static <T> PageTable<T> buildPageTable(IPage<T> iPage, TableRef<T> table) {
-        return buildPageTable(iPage.getTotal(),iPage.getPages(),iPage.getSize(),iPage.getCurrent(),table);
+        return buildPageTable(iPage.getTotal(), iPage.getPages(), iPage.getSize(), iPage.getCurrent(), table);
     }
 
     public static <T> PageTable<T> buildPageTable(long total, long pages, long size, long current, TableRef<T> table) {
@@ -43,7 +41,7 @@ public class TableFactory {
             list = new ArrayList<>();
         }
         Type type = tableRef.getType();
-        Field[] fields = ((Class<?>)type).getDeclaredFields();
+        Field[] fields = ((Class<?>) type).getDeclaredFields();
         for (Field field : fields) {
             TableHeader tableHeader = field.getAnnotation(TableHeader.class);
             if (null != tableHeader) {
