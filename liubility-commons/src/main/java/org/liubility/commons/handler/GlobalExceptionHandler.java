@@ -35,14 +35,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = {LBRuntimeException.class})
     @ResponseBody
-    public Result<String> getMessage(LBRuntimeException exception) {
-        return Result.error(exception.getMessage());
+    public Result<Object> getMessage(LBRuntimeException exception) {
+        return Result.build(exception.getCode().getCode(), exception.getMessage(), exception.getData());
     }
 
     @ExceptionHandler(value = {LBException.class})
     @ResponseBody
-    public Result<String> getMessage(LBException exception) {
-        return Result.error(exception.getMessage());
+    public Result<?> getMessage(LBException exception) {
+        return Result.build(exception.getCode().getCode(), exception.getMessage(), exception.getData());
     }
 
 
