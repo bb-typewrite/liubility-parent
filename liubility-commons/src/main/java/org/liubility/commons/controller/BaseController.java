@@ -22,7 +22,7 @@ public class BaseController {
         return BaseContextHolder.getUsername();
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return BaseContextHolder.getUserId();
     }
 

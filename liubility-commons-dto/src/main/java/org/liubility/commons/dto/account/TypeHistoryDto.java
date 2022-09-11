@@ -15,11 +15,11 @@ import java.sql.Date;
 @Data
 public class TypeHistoryDto {
 
-    private int id;
+    private long id;
 
-    private int userId;
+    private long userId;
 
-    private int articleId;
+    private long articleId;
 
     @TableHeader("跟打日期")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")

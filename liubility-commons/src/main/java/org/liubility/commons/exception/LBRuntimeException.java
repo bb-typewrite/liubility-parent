@@ -8,7 +8,11 @@ package org.liubility.commons.exception;
  */
 
 public class LBRuntimeException extends RuntimeException {
-    public LBRuntimeException(String message){
+    public LBRuntimeException(String message) {
         super(message);
+    }
+
+    public LBRuntimeException(String message, Throwable e) {
+        super(message, e);
     }
 }

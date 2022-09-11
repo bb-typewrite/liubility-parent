@@ -35,8 +35,8 @@ public class BaseContextHolder {
         return map.get(key);
     }
 
-    public static Integer getUserId() {
-        return Integer.valueOf(get(CommonConstants.USER_ID).toString());
+    public static Long getUserId() {
+        return Long.valueOf(get(CommonConstants.USER_ID).toString());
     }
 
     public static String getUsername() {

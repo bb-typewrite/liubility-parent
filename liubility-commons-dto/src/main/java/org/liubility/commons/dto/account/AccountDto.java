@@ -9,7 +9,7 @@ package org.liubility.commons.dto.account;
 
 public class AccountDto {
 
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -17,17 +17,17 @@ public class AccountDto {
 
     public AccountDto(){}
 
-    public AccountDto(int id,String username, String password) {
+    public AccountDto(Long id,String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
