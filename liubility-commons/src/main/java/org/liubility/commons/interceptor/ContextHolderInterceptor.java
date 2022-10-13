@@ -1,5 +1,6 @@
 package org.liubility.commons.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.liubility.commons.controller.BaseController;
 import org.liubility.commons.holder.BaseContextHolder;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +18,7 @@ import static org.liubility.commons.constant.CommonConstants.*;
  * @author llk
  * @date 2019-11-10 03:54
  */
+@Slf4j
 public class ContextHolderInterceptor implements WebRequestInterceptor {
 
     @Override
@@ -25,8 +27,10 @@ public class ContextHolderInterceptor implements WebRequestInterceptor {
         String userId = request.getHeader(USER_ID);
         String username = request.getHeader(USERNAME);
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
+        String ip = request.getHeader(IP);
         BaseContextHolder.set(USER_ID, userId);
         BaseContextHolder.set(USERNAME, username);
+        BaseContextHolder.set(IP, ip);
         BaseContextHolder.set(HttpHeaders.AUTHORIZATION, token);
 
         //页码信息

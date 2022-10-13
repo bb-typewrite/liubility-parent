@@ -12,6 +12,8 @@ public class CommonConstants {
 
     public final static String USERNAME = "username";
 
+    public final static String IP = "ip";
+
     public final static String PAGE_NUM = "pageNum";
 
     public final static String PAGE_SIZE = "pageSize";

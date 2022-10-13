@@ -43,6 +43,10 @@ public class BaseContextHolder {
         return get(CommonConstants.USERNAME).toString();
     }
 
+    public static String getIP(){
+        return get(CommonConstants.IP).toString();
+    }
+
     public static String getToken() {
         return get(HttpHeaders.AUTHORIZATION).toString();
     }

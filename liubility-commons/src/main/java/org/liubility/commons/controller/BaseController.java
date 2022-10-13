@@ -1,11 +1,6 @@
 package org.liubility.commons.controller;
 
-import org.liubility.commons.constant.CommonConstants;
 import org.liubility.commons.holder.BaseContextHolder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author JDragon
@@ -21,6 +16,8 @@ public class BaseController {
     public String getUsername() {
         return BaseContextHolder.getUsername();
     }
+
+    public String getIP(){return BaseContextHolder.getIP();}
 
     public long getUserId() {
         return BaseContextHolder.getUserId();
