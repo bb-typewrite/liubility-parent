@@ -15,6 +15,8 @@ public class AccountDto {
 
     private String password;
 
+    private String ip;
+
     public AccountDto(){}
 
     public AccountDto(Long id,String username, String password) {
@@ -45,5 +47,13 @@ public class AccountDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }
