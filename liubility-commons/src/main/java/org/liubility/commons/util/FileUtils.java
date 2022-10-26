@@ -1,4 +1,5 @@
 package org.liubility.commons.util;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +17,10 @@ import java.util.UUID;
 public class FileUtils {
     /**
      * 图片上传 返回访问地址
+     *
      * @return imgUrl
      */
-    public static String uploadFileReturnUrl(HttpServletRequest request, String filePath, MultipartFile file , String prefixUrl) throws IOException {
+    public static String uploadFileReturnUrl(HttpServletRequest request, String filePath, MultipartFile file, String prefixUrl) throws IOException {
 
         // 获取完整的文件名
         String trueFileName = file.getOriginalFilename();
@@ -42,25 +44,26 @@ public class FileUtils {
         File targetFile = new File(targetParentPath, fileName);
         file.transferTo(targetFile);
 
-        return itemPath + prefixUrl +fileName;
+        return itemPath + prefixUrl + fileName;
     }
-    public static String getItemPath(HttpServletRequest request){
+
+    public static String getItemPath(HttpServletRequest request) {
         String scheme = request.getScheme(); // 获取链接协议，http
         String serverName = request.getServerName(); // 获取服务器名称 localhost
         int serverPort = request.getServerPort(); // 获取端口 8080
 
 
-        if(scheme.equals("http")&&request.getHeader("origin").contains("https")){
+        if (scheme.equals("http") && request.getHeader("origin").contains("https")) {
             scheme = "https";
         }
-        String path = scheme+"://"+serverName;
-        if(serverPort!=80){
-            path += ":"+serverPort;
+        String path = scheme + "://" + serverName;
+        if (serverPort != 80) {
+            path += ":" + serverPort;
         }
         return path;
     }
 
-    public static void download(String urlPath, String localPath){
+    public static void download(String urlPath, String localPath) {
         try {
             URL url = new URL(urlPath);
             DataInputStream dataInputStream = new DataInputStream(url.openStream());
@@ -80,6 +83,29 @@ public class FileUtils {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String processingPaths(String path, String... fileName) {
+        for (String s : fileName) {
+            path = processingPath(path, s);
+        }
+        return path;
+    }
+
+
+    /**
+     * 格式路径
+     */
+    public static String processingPath(String path, String fileName) {
+        boolean end = path.endsWith("/");
+        boolean start = fileName.startsWith("/");
+        if (start && end) {
+            return path + fileName.substring(1);
+        } else if (start || end) {
+            return path + fileName;
+        } else {
+            return path + "/" + fileName;
         }
     }
 }
